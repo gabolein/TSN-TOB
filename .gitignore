@@ -1,0 +1,5 @@
+prototype/obj/*
+prototype/synch_broadcast
+interface_files/in/*
+interface_files/out/*
+*swp
