@@ -33,7 +33,7 @@ The lower the cycle duration the more probable it is that important actions will
 
 The cycle duration should be chosen such that the resulting slice duration is not too brief to do the necessary computations. The slice duration is obtained by calculating (cycle duration / 9). More or less thorough testing has shown that on the smicro machine the slice duration can be as low as ~300 usec, however delays due to context switches, syscalls etc. have too high variances to really say which slice duration is optimal.
 
-For this reason, especially when benchmarking, it is recommendable to set the CPU frequency with the [`performance` governor](https://wiki.archlinux.org/title/CPU_frequency_scaling#Scaling_governors).
+For this reason, especially when benchmarking, it is recommendable to set the CPU frequency with the [performance governor](https://wiki.archlinux.org/title/CPU_frequency_scaling#Scaling_governors).
 
 ## Benchmarking
 
