@@ -1,3 +1,5 @@
+# Time Aware Total Order Broadcast
+
 This is a TSN based proof-of-concept implementation of Kopetz et. al.'s synchronous Total Order Broadcast algorithm. It is an experimental prototype that serves towards showcasing how TSN can enable the implementation of synchronous distributed algorithms.
 The prototype was created for the SuperMicro target device. Big portions of the implementation (especially the setup script) would have to be adapted in order to make the prototype portable.
 
