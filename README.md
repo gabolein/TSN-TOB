@@ -7,7 +7,8 @@ The prototype was created for the SuperMicro target device. Big portions of the 
 
 The source code and Makefile for the application can be found in the `prototype` directory. The `interface_files` directory contains the input files, from which the application fetches messages that are to be delivered and the output files, to which these messages are then delivered by the application. The `benchmark` directory contains scripts to collect benchmark data and to plot the data.
 The `setup.sh` and `synch_clocks.sh` serve to create an environment in which to run several nodes. 
-A copy of my thesis is supplied additionally, as the implementation is described more thoroughly therein.
+
+Feel free to check out my [thesis](thesis.pdf) for more details concerning motivation, implementation and evaluation.
 
 ## Setup
 
@@ -46,3 +47,14 @@ The `bench_delivery.sh` script runs three nodes that collect timestamps when the
 ## Compiling
 
 A trivial Makefile is provided in the `prototype` directory. If one wishes to add files to the compilation process, they must be explicitly listed in the Makefile. To compile a node, simply run `make`. For benchmarking purposes, certain smaller bits of the program can compiled differently by running either `make LATENCY_BENCH=1` and `make DELIVERY_BENCH=1`.
+
+## Demo
+
+Since this is a TDMA protocol, the fact that it can deliver messages in the correct order is not so impressive. It is rather a proof of concept that, with TSN, we can implement ordered message delivery, i.e. consensus, regardless of the network load. Either way, feel free to try out the program in virtual mode through the following steps:
+
+1. Run `./setup 4 10000000 v` as superuser. This will create several namespaces and virtual devices, don't forget to delete them with `ip {ns,link} delete <name>` (or just run in a VM).
+2. Open 4 separate terminals and run `prototype/run_node.sh <node ID> 4 10000000` as superuser in each terminal, where `<node ID>` is `0` for the first terminal, `1` for the second etc.
+3. Have fun observing the log messages printing for as long as you like.
+3. Press `q`, then `ENTER` to shutdown a node gracefully. The log messages will show the other nodes acknowledging its failure.
+
+Files in the `interface/out/` directory will then hold the messages in the sequence in which they were delivered. If a node fails, it is recognized as faulty within one round, and its last message is not delivered.
