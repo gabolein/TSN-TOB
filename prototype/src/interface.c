@@ -65,7 +65,7 @@ void fetch_message(service_msg* msg, uint8_t memb_count){
 void deliver_message(uint8_t nodeID){
 /*do not deliver if empty msg*/
 	if(*(node_states[nodeID].last_msg->data) == '\0'){
-		log_info("msg received from node %u was empty. Not delivering");
+		log_info("msg received from node %u was empty. Not delivering", nodeID);
 		return;
 	}
 	log_info("Writing last message from %u to file interface_files/out/%u", nodeID, SELF_ID);
