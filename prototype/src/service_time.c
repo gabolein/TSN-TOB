@@ -10,7 +10,7 @@
 #include "log.h"
 
 #define TURN_DURATION (CYCLE_DURATION/AMOUNT_NODES)
-#define TWO_NODES_THRESHOLD 20
+#define TWO_NODES_THRESHOLD 1000
 #define SLICES_IN_TURN 3
 
 void set_cycle_duration(uint32_t cycle_duration){
